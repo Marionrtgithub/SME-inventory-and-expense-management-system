@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background-color: #005bb5;
+    }
+
+    .tab-content {
+      display: none;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .btn:hover {
+      background-color: #005bb5;
+    }
+
+    @media screen and (max-width: 768px) {
+      .tab-button {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      input, select {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      label {
+        font-size: 0.9rem;
+      }
+
+      input, select {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Settings</h1>
+  </header>
+
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-button active" onclick="openTab('profile')">User Profile</button>
+      <button class="tab-button" onclick="openTab('business')">Business Settings</button>
+      <button class="tab-button" onclick="openTab('notifications')">Notification Preferences</button>
+    </div>
+    <div id="profile" class="tab-content active">
+      <h2>User Profile</h2>
+      <form id="profileForm">
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">New Password:</label>
+          <input type="password" id="password" placeholder="Enter new password">
+        </div>
+        <button type="submit" class="btn">Update Profile</button>
+      </form>
+    </div>
+    <div id="business" class="tab-content">
+      <h2>Business Settings</h2>
+      <form id="businessForm">
+        <div class="form-group">
+          <label for="taxRate">Tax Rate (%):</label>
+          <input type="number" id="taxRate" placeholder="e.g. 15" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label for="currency">Preferred Currency:</label>
+          <select id="currency" required>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="KES">KES - Kenyan Shilling</option>
+            <option value="GBP">GBP - British Pound</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Save Settings</button>
+      </form>
+    </div>
+    <div id="notifications" class="tab-content">
+      <h2>Notification Preferences</h2>
+      <form id="notificationForm">
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="lowStock" checked>
+            Notify me for low stock
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="pendingExpenses">
+            Alert me for pending expenses
+          </label>
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="monthlySummary">
+            Receive monthly financial summary
+          </label>
+        </div>
+        <button type="submit" class="btn">Save Preferences</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+    document.getElementById('profileForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("Profile updated successfully!");
+    });
+
+    document.getElementById('businessForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("Business settings saved!");
+    });
+
+    document.getElementById('notificationForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("Notification preferences saved!");
+    });
+  </script>
+</body>
+</html>
