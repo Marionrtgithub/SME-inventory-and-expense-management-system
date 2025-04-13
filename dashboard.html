@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #343a40;
+      color: white;
+    }
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #005bb5;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding-top: 50px;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #007BFF;
+    }
+    @media screen and (max-width: 768px) {
+      .main-content {
+        padding: 1rem;
+      }
+
+      table {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      header {
+        font-size: 1.5rem;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Inventory Management</h1>
+    </header>
+    <div class="main-content">
+      <div id="inventorySection">
+        <h2>Product Inventory</h2>
+        <table id="inventoryTable">
+          <thead>
+            <tr>
+              <th>Product Image</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button class="btn" onclick="showAddProduct()">Add New Product</button>
+      </div>
+
+      <div id="addProductModal" class="modal">
+        <div class="modal-content">
+          <h2>Add Product</h2>
+          <input type="text" id="productName" class="form-input" placeholder="Product Name" />
+          <input type="number" id="productQuantity" class="form-input" placeholder="Quantity" />
+          <input type="number" id="productPrice" class="form-input" placeholder="Price" />
+          <input type="text" id="productImageUrl" class="form-input" placeholder="Product Image URL" />
+          <button class="btn" onclick="addProduct()">Add Product</button>
+          <button class="btn" onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+
+      <div id="stockReportsSection" style="display: none;">
+        <h2>Stock Reports</h2>
+        <p>Reports for stock levels, low stock alerts, and reorder recommendations will be available here.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let inventory = [];
+    function showInventory() {
+      document.getElementById('inventorySection').style.display = 'block';
+      document.getElementById('addProductModal').style.display = 'none';
+      document.getElementById('stockReportsSection').style.display = 'none';
+      renderInventory();
+    }
+    function showAddProduct() {
+      document.getElementById('addProductModal').style.display = 'block';
+      document.getElementById('inventorySection').style.display = 'none';
+      document.getElementById('stockReportsSection').style.display = 'none';
+    }
+
+    function showStockReports() {
+      document.getElementById('stockReportsSection').style.display = 'block';
+      document.getElementById('inventorySection').style.display = 'none';
+      document.getElementById('addProductModal').style.display = 'none';
+    }
+
+    function addProduct() {
+      const name = document.getElementById('productName').value;
+      const quantity = document.getElementById('productQuantity').value;
+      const price = document.getElementById('productPrice').value;
+      const imageUrl = document.getElementById('productImageUrl').value;
+
+      if (name && quantity && price) {
+        inventory.push({ name, quantity, price, imageUrl: imageUrl || 'default-image.jpg' }); // Default image if no URL is provided
+        closeModal();
+        renderInventory();
+      } else {
+        alert('Please fill in all fields!');
+      }
+    }
+
+    function renderInventory() {
+      const inventoryTable = document.getElementById('inventoryTable').getElementsByTagName('tbody')[0];
+      inventoryTable.innerHTML = '';
+
+      inventory.forEach((product, index) => {
+        const row = inventoryTable.insertRow();
+        const imageCell = row.insertCell(0);
+        imageCell.innerHTML = `<img src="${product.imageUrl}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover;" />`;
+        
+        row.insertCell(1).innerText = product.name;
+        row.insertCell(2).innerText = product.quantity;
+        row.insertCell(3).innerText = `$${product.price}`;
+        row.insertCell(4).innerHTML = `<button class="btn" onclick="editProduct(${index})">Edit</button> 
+                                      <button class="btn" onclick="deleteProduct(${index})">Delete</button>`;
+      });
+    }
+    function editProduct(index) {
+      const product = inventory[index];
+      alert('Edit Product: ' + product.name);
+    }
+    function deleteProduct(index) {
+      inventory.splice(index, 1);
+      renderInventory();
+    }
+    function closeModal() {
+      document.getElementById('addProductModal').style.display = 'none';
+      document.getElementById('inventorySection').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
