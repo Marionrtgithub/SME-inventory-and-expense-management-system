@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SME Manager</title>
+  <link rel="stylesheet" href="index.css" />
+  <script defer src="index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="home-container">
+    <header class="header">
+      <div class="logo">SME Manager</div>
+      <nav class="nav">
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/expenses.html">Expenses</a>
+        <a href="/sales.html">Sales</a>
+        <a href="/reports.html">Reports</a>
+        <a href="/settings.html">Settings</a>
+      </nav>
+      <div class="profile">👤</div>
+      <div class="logout">
+        <button class="logout-btn" onclick="logoutUser()">Logout</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Streamline Inventory & Expense Tracking</h1>
+        <p>Manage your SME operations efficiently with real-time tools and smart reports.</p>
+        <button id="getStartedBtn" class="btn-primary">Get Started</button>
+        <button id="learnMoreBtn" class="btn-secondary">Learn More</button>
+        <div id="learnMoreSection" class="learn-more-info" style="display: none;">
+          <h3>About the System</h3>
+          <p>Our system helps you track inventory, manage expenses, and generate insightful reports for your small or medium enterprise. Learn how you can leverage the power of real-time data to make informed decisions.</p>
+        </div>
+        <p id="signUpMessage" style="display: none;">You are signing up! Please complete the form below.</p>
+      </div>
+      <div class="hero-image">
+        <img src="images/warehouse.jpg" alt="Inventory Dashboard" />
+      </div>
+    </section>
+
+    <section id="signUpForm" class="cta" style="display: none;">
+      <h2>Ready to Optimize Your Business?</h2>
+      <p>Sign up today and take control of your inventory and expenses!</p>
+      <div class="sign-up-form">
+        <input type="email" id="email" placeholder="Enter your email" />
+        <input type="password" id="password" placeholder="Enter your password" />
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" />
+        <p class="error-message" id="passwordError" style="color: red;"></p>
+        <button id="signUpBtn" class="btn-primary">Sign Up</button>
+        <button id="googleSignInBtn" class="btn-google">Sign in with Google</button>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Core Features</h2>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <i class="fas fa-box-open feature-icon"></i>
+          <h3>Inventory Management</h3>
+          <p>Track and manage stock levels with real-time insights.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-wallet feature-icon"></i>
+          <h3>Expense Tracking</h3>
+          <p>Log, categorize, and review expenses with ease.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-chart-line feature-icon"></i>
+          <h3>Sales Reports</h3>
+          <p>Visualize performance and trends to make informed decisions.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-people-carry feature-icon"></i>
+          <h3>Supplier Management</h3>
+          <p>Maintain supplier records and track order histories.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <h3>$25,000</h3>
+        <p>Total Inventory Value</p>
+      </div>
+      <div class="stat-card">
+        <h3>$8,000</h3>
+        <p>Total Expenses</p>
+      </div>
+      <div class="stat-card">
+        <h3>$15,000</h3>
+        <p>Total Sales</p>
+      </div>
+      <div class="stat-card">
+        <h3>12</h3>
+        <p>Active Suppliers</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
