@@ -1,0 +1,279 @@
+
+.home-container {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #1f2d3d;
+    color: white;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+  }
+  .logout {
+    text-align: center;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+  }
+  .logout-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .logout-btn:hover {
+    background-color: #007BFF;
+  }
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    background-color: #f5f7fa;
+    flex-wrap: wrap;
+  }
+  
+  .hero-text {
+    max-width: 50%;
+  }
+  
+  .hero-image img {
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-primary {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    margin-right: 1rem;
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+  }
+  
+  .features {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .feature-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 1rem;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e9ecef;
+    padding: 2rem;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  
+  .stat-card {
+    flex: 1 1 150px;
+    margin: 1rem;
+  }
+  
+  .cta {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+  
+  .sign-up-form {
+    background-color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sign-up-form input {
+    width: 48%;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    margin-right: 4%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    display: inline-block;
+  }
+  
+  .sign-up-form input:last-child {
+    margin-right: 0;
+  }
+  
+  .sign-up-form input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  .sign-up-form .btn-primary,
+  .sign-up-form .btn-google {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .sign-up-form .btn-primary {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .sign-up-form .btn-primary:hover {
+    background-color: #005bb5;
+  }
+  
+  .sign-up-form .btn-google {
+    background-color: #db4437;
+    color: white;
+  }
+  
+  .sign-up-form .btn-google:hover {
+    background-color: #c1351d;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav {
+      margin-top: 1rem;
+    }
+  
+    .hero {
+      flex-direction: column;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+  
+    .hero-text {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+  
+    .feature-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .feature-card {
+      width: 90%;
+    }
+  
+    .stats {
+      flex-direction: column;
+    }
+  
+    .stat-card {
+      margin-bottom: 1.5rem;
+    }
+  
+    .sign-up-form input {
+      width: 100%;
+      margin-right: 0;
+    }
+  
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Mobile Devices (480px and below) */
+  @media screen and (max-width: 480px) {
+    .hero {
+      padding: 2rem 1rem;
+    }
+  
+    .feature-icon {
+      font-size: 1.8rem;
+    }
+  
+    .feature-card {
+      padding: 1rem;
+    }
+  
+    .sign-up-form {
+      padding: 20px;
+    }
+  
+    .sign-up-form input {
+      font-size: 14px;
+    }
+  
+    .sign-up-form .btn-primary,
+    .sign-up-form .btn-google {
+      font-size: 14px;
+      padding: 12px;
+    }
+  
+    .stat-card h3 {
+      font-size: 1.2rem;
+    }
+  
+    .stat-card p {
+      font-size: 0.9rem;
+    }
+  }
+  
